@@ -17,6 +17,7 @@ pipeline {
         stage('error') {
           steps {
             writeFile(file: 'test.txt', text: 'Tada', encoding: 'utf8')
+            echo '${env.name}'
           }
         }
       }
@@ -63,7 +64,12 @@ pipeline {
     stage('bye') {
       steps {
         echo 'finsihed'
+        echo 'This is ${env.env}'
       }
     }
+  }
+  environment {
+    env = 'Dev'
+    name = 'tayyab'
   }
 }
