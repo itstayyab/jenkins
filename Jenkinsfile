@@ -7,6 +7,7 @@ pipeline {
           steps {
             echo 'This is a prep task'
             sh 'ls -ltr'
+            input(message: 'Enter value', id: '1', ok: 'start', submitterParameter: 'Dev,SQE,PPR,PROD')
           }
         }
         stage('prep based down') {
@@ -17,6 +18,7 @@ pipeline {
         stage('error') {
           steps {
             writeFile(file: 'test.txt', text: 'Tada', encoding: 'utf8')
+            echo '${env.name}'
           }
         }
       }
@@ -63,7 +65,12 @@ pipeline {
     stage('bye') {
       steps {
         echo 'finsihed'
+        echo 'This is ${env.env}'
       }
     }
+  }
+  environment {
+    env = 'Dev'
+    name = 'tayyab'
   }
 }
