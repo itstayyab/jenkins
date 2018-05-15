@@ -14,7 +14,7 @@ pipeline {
             sleep 2
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             writeFile(file: 'test.txt', text: 'Tada', encoding: 'utf8')
           }
@@ -47,7 +47,7 @@ pipeline {
             sh 'cat test.txt'
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             sh 'echo "last stage" >> test.txt'
           }
@@ -62,7 +62,7 @@ pipeline {
     }
     stage('bye') {
       steps {
-        echo 'bye'
+        echo 'finsihed'
       }
     }
   }
