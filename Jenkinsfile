@@ -7,6 +7,7 @@ pipeline {
           steps {
             echo 'This is a prep task'
             sh 'ls -ltr'
+            input(message: 'Enter value', id: '1', ok: 'start', submitterParameter: 'Dev,SQE,PPR,PROD')
           }
         }
         stage('prep based down') {
